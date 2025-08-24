@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pre-Enrollment Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+      margin: 0;
+    }
+
+    .form-container {
+      width: 650px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group label .required {
+      color: red;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #007BFF;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    /* Receipt styles */
+    #receiptBox {
+      display: none;
+      background: white;
+      border: 2px solid #333;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    #receiptBox h2, #receiptBox h3 {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    #receiptBox p {
+      text-align: center;
+      margin: 5px 0;
+    }
+
+    #receiptBox button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #receiptBox button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <a href="index.html" class="back-button">← Back to Main Page</a>
+
+    <h2>FBNHS-SHS PRE-ENROLLMENT FORM</h2>
+    <h3>SY: 2023-2024</h3>
+
+    <form id="enrollmentForm">
+      <!-- Student Name -->
+      <div class="form-group">
+        <label>Student Name <span class="required">*</span></label>
+        <div class="form-row">
+          <input type="text" placeholder="Surname" name="student_surname" required>
+          <input type="text" placeholder="First Name" name="student_first" required>
+          <input type="text" placeholder="Middle Name" name="student_middle">
+          <input type="text" placeholder="Suffix" name="student_suffix">
+        </div>
+      </div>
+
+      <!-- LRN -->
+      <div class="form-group">
+        <label>LRN <span class="required">*</span></label>
+        <input type="text" name="lrn" maxlength="12" minlength="12" required placeholder="12-digit LRN" class="numeric-only">
+      </div>
+
+      <!-- Track -->
+      <div class="form-group">
+        <label>Track <span class="required">*</span></label>
+        <select name="track" required>
+          <option value="">-- Select Track --</option>
+          <option value="HUMSS">Humanities and Social Sciences (HUMSS)</option>
+          <option value="ABM">Accountancy, Business, and Management (ABM)</option>
+          <option value="TVL - ICT">TVL - Information Communication Technology</option>
+          <option value="TVL - Cookery">TVL - Cookery</option>
+          <option value="TVL - FBS">TVL - Food and Beverage Services</option>
+        </select>
+      </div>
+
+      <!-- Sex -->
+      <div class="form-group">
+        <label>Sex <span class="required">*</span></label>
+        <select name="sex" required>
+          <option value="">-- Select --</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <!-- DOB + Age -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date of Birth <span class="required">*</span></label>
+          <input type="date" name="dob" required>
+        </div>
+        <div class="form-group">
+          <label>Age <span class="required">*</span></label>
+          <input type="text" name="age" maxlength="2" required placeholder="" class="numeric-only">
+        </div>
+      </div>
+
+      <!-- IP -->
+      <div class="form-group">
+        <label>Belonging to Indigenous People (IP) <span class="required">*</span></label>
+        <select name="ip" required>
+          <option value="">-- Select --</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <!-- 4Ps -->
+      <div class="form-group">
+        <label>Is your family beneficiary of 4P's <span class="required">*</span></label>
+        <select name="fourps" required>
+          <option value="">-- Select --</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <!-- SPED -->
+      <div class="form-group">
+        <label>Learners with Special Education needs? <span class="required">*</span></label>
+        <select name="sped" required>
+          <option value="">-- Select --</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label>Address <span class="required">*</span></label>
+        <input type="text" placeholder="Street/Barangay" name="address1" required>
+        <input type="text" placeholder="District/Municipality" name="address2" required>
+        <input type="text" placeholder="City/Province" name="address3" required>
+        <input type="text" placeholder="Zip Code" name="zip" maxlength="4" required class="numeric-only">
+      </div>
+
+      <!-- Contact -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contact Number <span class="required">*</span></label>
+          <input type="text" name="contact" maxlength="11" minlength="11" required placeholder="11-digit number" class="numeric-only">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="name@example.com">
+        </div>
+      </div>
+
+      <!-- Father -->
+      <div class="form-group">
+        <label>Father's Name <span class="required">*</span></label>
+        <div class="form-row">
+          <input type="text" placeholder="Surname" name="father_surname" required>
+          <input type="text" placeholder="First Name" name="father_first" required>
+          <input type="text" placeholder="Middle Name" name="father_middle" required>
+          <input type="text" placeholder="Suffix" name="father_suffix">
+        </div>
+      </div>
+
+      <!-- Mother -->
+      <div class="form-group">
+        <label>Mother's Name <span class="required">*</span></label>
+        <div class="form-row">
+          <input type="text" placeholder="Surname" name="mother_surname" required>
+          <input type="text" placeholder="First Name" name="mother_first" required>
+          <input type="text" placeholder="Middle Name" name="mother_middle" required>
+          <input type="text" placeholder="Suffix" name="mother_suffix">
+        </div>
+      </div>
+
+      <!-- Guardian -->
+      <div class="form-group">
+        <label>Guardian's Name <span class="required">*</span></label>
+        <div class="form-row">
+          <input type="text" placeholder="Surname" name="guardian_surname" required>
+          <input type="text" placeholder="First Name" name="guardian_first" required>
+          <input type="text" placeholder="Middle Name" name="guardian_middle" required>
+          <input type="text" placeholder="Suffix" name="guardian_suffix">
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <!-- Receipt Box -->
+    <div id="receiptBox">
+      <h2>FBNHS - Senior High School</h2>
+      <h3>Pre-Enrollment Receipt</h3>
+      <p>SY: 2023-2024</p>
+      <p><strong>Enrollment ID:</strong> <span id="enrollmentID"></span></p>
+      <p><strong>Student Name:</strong> <span id="studentName"></span></p>
+      <p><strong>Issued:</strong> <span id="issuedDate"></span></p>
+      <p style="margin-top:20px; font-size:14px;">Please keep this receipt for official record.</p>
+      <button onclick="window.print()">Print Receipt</button>
+      <button onclick="downloadReceipt()">Download Receipt</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("enrollmentForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      // Generate Enrollment ID
+      const enrollmentID = "FBNHS" + Date.now();
+
+      // Get student name
+      const first = document.querySelector("[name='student_first']").value;
+      const middle = document.querySelector("[name='student_middle']").value;
+      const surname = document.querySelector("[name='student_surname']").value;
+      const suffix = document.querySelector("[name='student_suffix']").value;
+      const fullName = surname + ", " + first + " " + (middle ? middle.charAt(0) + "." : "") + (suffix ? " " + suffix : "");
+
+      // Show receipt
+      document.getElementById("enrollmentID").textContent = enrollmentID;
+      document.getElementById("studentName").textContent = fullName;
+
+      // Add date/time issued
+      const now = new Date();
+      const issuedDate = now.toLocaleString();
+      document.getElementById("issuedDate").textContent = issuedDate;
+
+      document.getElementById("receiptBox").style.display = "block";
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+
+    // Download receipt as text file
+    function downloadReceipt() {
+      const enrollmentID = document.getElementById("enrollmentID").textContent;
+      const studentName = document.getElementById("studentName").textContent;
+      const issuedDate = document.getElementById("issuedDate").textContent;
+
+      const receiptText =
+`FBNHS - Senior High School
+Pre-Enrollment Receipt
+SY: 2023-2024
+
+Enrollment ID: ${enrollmentID}
+Student Name: ${studentName}
+Issued: ${issuedDate}
+
+Please keep this receipt for official record.`;
+
+      const blob = new Blob([receiptText], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "receipt.txt";
+      link.click();
+    }
+
+    // Enforce numeric-only input
+    document.querySelectorAll(".numeric-only").forEach(input => {
+      input.addEventListener("keypress", function(e) {
+        if (!/[0-9]/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
