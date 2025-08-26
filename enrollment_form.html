@@ -202,7 +202,7 @@
     <div id="receiptBox" class="mt-4">
       <h2>FBNHS - Senior High School</h2>
       <h3>Pre-Enrollment Receipt</h3>
-      <p>SY: 2023-2024</p>
+      <p>SY: 2026-2027</p>
       <p><strong>Enrollment ID:</strong> <span id="enrollmentID"></span></p>
       <p><strong>Student Name:</strong> <span id="studentName"></span></p>
       <p><strong>Issued:</strong> <span id="issuedDate"></span></p>
@@ -215,43 +215,57 @@
   </div>
 
   <script>
-    document.getElementById("enrollmentForm").addEventListener("submit", function(e){
-      e.preventDefault();
+  document.getElementById("enrollmentForm").addEventListener("submit", function(e){
+  e.preventDefault();
 
-      const enrollmentID = "FBNHS" + Date.now();
-      const first = document.querySelector("[name='student_first']").value;
-      const middle = document.querySelector("[name='student_middle']").value;
-      const surname = document.querySelector("[name='student_surname']").value;
-      const suffix = document.querySelector("[name='student_suffix']").value;
-      const fullName = surname + ", " + first + " " + (middle ? middle.charAt(0) + "." : "") + (suffix ? " " + suffix : "");
+  // Generate Enrollment Code (5 random digits)
+  const randomCode = Math.floor(10000 + Math.random() * 90000); 
+  const enrollmentCode = "FBNHS-SHS " + randomCode;
 
-      document.getElementById("enrollmentID").textContent = enrollmentID;
-      document.getElementById("studentName").textContent = fullName;
-      const now = new Date();
-      document.getElementById("issuedDate").textContent = now.toLocaleString();
-      document.getElementById("receiptBox").style.display = "block";
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    });
+  // Get student name
+  const first = document.querySelector("[name='student_first']").value;
+  const middle = document.querySelector("[name='student_middle']").value;
+  const surname = document.querySelector("[name='student_surname']").value;
+  const suffix = document.querySelector("[name='student_suffix']").value;
+  const fullName = surname + ", " + first + " " + (middle ? middle.charAt(0) + "." : "") + (suffix ? " " + suffix : "");
 
-    function downloadReceipt() {
-      const enrollmentID = document.getElementById("enrollmentID").textContent;
-      const studentName = document.getElementById("studentName").textContent;
-      const issuedDate = document.getElementById("issuedDate").textContent;
-      const receiptText =
+  // Show receipt
+  document.getElementById("enrollmentID").textContent = enrollmentCode;
+  document.getElementById("studentName").textContent = fullName;
+
+  // Add date/time issued
+  const now = new Date();
+  const issuedDate = now.toLocaleString();
+  document.getElementById("issuedDate").textContent = issuedDate;
+
+  document.getElementById("receiptBox").style.display = "block";
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+});
+
+// Download receipt as text file
+function downloadReceipt() {
+  const enrollmentCode = document.getElementById("enrollmentID").textContent;
+  const studentName = document.getElementById("studentName").textContent;
+  const issuedDate = document.getElementById("issuedDate").textContent;
+
+  const receiptText =
 `FBNHS - Senior High School
 Pre-Enrollment Receipt
-SY: 2023-2024
+SY: 2026-2027
 
-Enrollment ID: ${enrollmentID}
+Enrollment Code: ${enrollmentCode}
 Student Name: ${studentName}
 Issued: ${issuedDate}
 
 Please keep this receipt for official record.`;
-      const blob = new Blob([receiptText], { type: "text/plain" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "receipt.txt";
-      link.click();
+
+  const blob = new Blob([receiptText], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "receipt.txt";
+  link.click();
+}
+
     }
 
     document.querySelectorAll(".numeric-only").forEach(input => {
@@ -262,3 +276,4 @@ Please keep this receipt for official record.`;
   </script>
 </body>
 </html>
+
