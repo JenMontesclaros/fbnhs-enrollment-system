@@ -1,60 +1,356 @@
-/* Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  padding-top: 70px; /* space for navbar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  
 }
 
-/* Navbar */
-.custom-navbar {
-  background-color: hsl(158, 96%, 15%);
-}
-.logo-topnav {
-  height: 40px;
-}
+
 .fbnshs {
-  font-size: 14px;
+  color: white;
+  font-style: italic;
+  font-size: 12px;
   font-weight: bold;
+  display: inline;
+  
+}
+
+/* Navigation Bar */
+#topnav {
+   background-color: hsl(158, 96%, 10%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: white; 
+  /*   position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */*/
+  
+  
+
+}
+
+#topnav a {
+  color: white;
+  padding: 14px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#topnav a:hover {
+  background-color: #0d0e0d;
+}
+
+#topnav a.active {
+  background-color: #4CAF50;
   color: white;
 }
 
-/* Sections */
-.section {
-  padding: 60px 20px;
+/* Content */
+.content {
+  padding: 20px;
+ 
 }
-.section h1, .section h2 {
+
+.container {
+ 
+  margin-bottom: 20px;
+  margin-top: 20px;
+ 
+
+
+
+  
+}
+
+.nav-bar {
+  float: right;
+  
+  
+}
+
+.bg-design{
+
+
+
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 300px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 100px;
+  font-family: sans-serif;
+}
+
+p {
+  margin-top: 100px;
+  text-align: justify;
+  margin: 70px;
+  padding: 60px;
+  font-family: sans-serif;  
+  
+}
+
+/* Top navigation logo */
+.logo-topnav {
+  height: 50px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* Content logo */
+.logo-content {
+  width: 300px;  /* Specify your desired width */
+  height: 300px; /* Specify your desired height */
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  margin-top: 70px;
+  width: 300px; /* Adjust to the desired size */
+  height: 300px; /* Same as width to keep it circular */
+  border-radius: 50%; /* Makes the element circular */
+  box-shadow: 0 4px 8px rgba(5, 5, 5, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  overflow: hidden; /* Ensures content inside stays within the circular shape */
+}
+
+
+/* Carousel container */
+.carousel-container {
+  text-align: center;
+  background-color: #2e7d32;
+  color: white;
+  padding: 20px 0;
+  
+
+ 
+
+ 
+}
+
+.carousel-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Carousel */
+.carousel {
+  margin: 0 auto;
+  max-width: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Carousel images */
+.carousel-item img {
+  object-fit: cover;
+  width: 100%;      /* Ensures the image scales to the width of the container */
+  height: auto;     /* Maintains aspect ratio */
+  max-width: 550px; /* Maximum width to prevent overscaling */
+  max-height: 550px; /* Adjust this if you want to control the maximum height */
+  margin-left: 140px;
+}
+
+/* Overlay for text */
+.carousel-caption {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 90%;
+  text-align: left;
+}
+
+/* Carousel indicators */
+.carousel-indicators li {
+  background-color: #ffffff;
+  bottom: 0; /* Make sure bottom is set to 0 */
+  transform: translateY(25px);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.enrollment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3c9e37; /* Adjust the color as needed */
+  padding: 20px;
+  height: 500px;
+}
+
+.enrollment-text {
+  text-align: left;
+  color: white;
+  margin-left: 450px;
+}
+
+.enrollment-text h2 {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.alert-button {
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.enrollment-image {
+  width: 400px; /* Adjust as needed */
+  height: auto;
+  border-radius: 50%;
+  margin-right: 500px;
+}
+
+.container.mt-5{
+  margin-bottom: 200px;
+}
+
+
+.contact-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin: 0 auto; /* This centers the form horizontally */
+    margin-top: 100px; 
+    margin-bottom: 100px;
+}
+
+.contact-form h2 {
   margin-bottom: 20px;
 }
-.section p, .section ul {
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   font-size: 16px;
 }
 
-/* About logo */
-.logo-content {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 20px auto;
-  display: block;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
 }
 
-/* Footer */
-.footer {
-  background: #013220;
+.contact-form button {
+  background-color: #4CAF50;
   color: white;
-  text-align: center;
-  padding: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
 }
-.footer a { color: #fff; }
-.footer a:hover { text-decoration: underline; }
 
-/* Responsive Fix */
+.contact-form button:hover {
+  background-color: #45a049;
+}
+
+
+footer {
+  background-color: #013220; /* Dark green background color */
+  color: white;
+  text-align: center; /* This ensures all text inside footer is centered */
+  font-size: 14px;
+  line-height: 1.2; /* Tighter line spacing */
+}
+
+footer p {
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
-  .logo-content {
-    width: 120px;
-    height: 120px;
+  .nav-bar {
+    flex-direction: column;
+    text-align: center;
   }
 }
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff; /* or your desired background */
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* optional: adds a shadow when sticky */
+}
+.topnav {
+  transition: all 0.3s ease-in-out;
+}
+
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.container.mt-5 {
+  min-height: 200px;
+  margin-top: 100px;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  scroll-margin-top: 50px;
+  padding-top: 60px;
+  min-height: 200px;
+}
+
