@@ -1,3 +1,4 @@
+/* ========= Reset & basics ========= */
 * {
   margin: 0;
   padding: 0;
@@ -5,289 +6,218 @@
 }
 
 html {
-  scroll-behavior: smooth; /* smooth scroll animation */
+  scroll-behavior: smooth;
 }
 
-.fbnshs {
-  color: white;
-  font-style: italic;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
 }
 
-/* Sticky Navigation Bar */
+/* ========= Navbar / Top ========= */
 #topnav {
   background-color: hsl(158, 96%, 10%);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.18);
   z-index: 1030;
 }
 
-#topnav .navbar-brand {
-  font-weight: bold;
+/* brand text */
+.fbnshs {
   color: white;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-#topnav .navbar-toggler {
-  border-color: rgba(255,255,255,0.3);
+/* logo in navbar */
+.logo-topnav {
+  height: 40px;
 }
 
-#topnav .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
+/* nav link colors */
 #navbarNav .nav-link {
   color: white !important;
-  padding: 10px 15px;
-  transition: color 0.3s ease;
+  padding: 10px 12px;
+  transition: color 0.2s ease, background 0.2s ease;
 }
-
 #navbarNav .nav-link:hover {
-  color: #FFD700 !important; /* hover effect */
+  color: #FFD700 !important; /* gold */
+  background: rgba(255,255,255,0.03);
+  border-radius: 4px;
 }
-
-/* Scrollspy active link highlight */
+/* active (scrollspy) */
 #navbarNav .nav-link.active {
   color: #FFD700 !important;
-  font-weight: bold;
+  font-weight: 700;
 }
 
-/* Content Section */
-.content {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* toggler icon color */
+.navbar-toggler {
+  border-color: rgba(255,255,255,0.2);
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,0.9%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-h1 {
-  margin-top: 100px;
-  font-family: sans-serif;
+/* ========= Sections / spacing ========= */
+.section {
+  padding-top: 80px;
+  padding-bottom: 40px;
+  scroll-margin-top: 90px; /* helps anchor linking under sticky nav */
 }
 
-p {
-  margin-top: 100px;
-  text-align: justify;
-  margin: 70px;
-  padding: 60px;
-  font-family: sans-serif;
-}
-
-/* Top navigation logo */
-.logo-topnav {
-  height: 50px;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-
-/* Content logo */
+/* About */
 .logo-content {
-  width: 300px;
-  height: 300px;
-  display: block;
-  margin: 70px auto 60px auto;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(5, 5, 5, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-  overflow: hidden;
-}
-
-/* Carousel container */
-.carousel-container {
-  text-align: center;
-  background-color: #2e7d32;
-  color: white;
-  padding: 20px 0;
-}
-
-.carousel-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* Carousel */
-.carousel {
-  margin: 0 auto;
-  max-width: 800px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-/* Carousel images */
-.carousel-item img {
-  object-fit: cover;
+  max-width: 260px;
   width: 100%;
   height: auto;
-  max-width: 550px;
-  max-height: 550px;
-  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-/* Carousel indicators */
+/* headings & paragraph spacing (made modest for small screens) */
+h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+p {
+  color: #222;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ========= Carousel ========= */
+.carousel-container {
+  background-color: #2e7d32;
+  color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.carousel-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.carousel {
+  max-width: 100%;
+}
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* indicators */
 .carousel-indicators li {
-  background-color: #ffffff;
-  bottom: 0;
-  transform: translateY(25px);
+  background-color: rgba(255,255,255,0.9);
 }
 
+/* controls */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0,0,0,0.35);
   border-radius: 50%;
 }
 
-/* Enrollment Section */
+/* ========= Enrollment ========= */
 .enrollment {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: #3c9e37;
-  padding: 20px;
-  flex-wrap: wrap;
-}
-
-.enrollment-text {
-  text-align: center;
   color: white;
-  flex: 1;
-  margin: 20px;
 }
-
 .enrollment-text h2 {
-  font-weight: bold;
-  font-size: 40px;
+  font-size: 36px;
+  margin-bottom: 12px;
 }
-
 .alert-button {
-  background-color: white;
+  background-color: #fff;
+  color: #111;
   border: none;
   padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
+  border-radius: 24px;
+  font-weight: 700;
   cursor: pointer;
+}
+.enrollment-image {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ========= Requirements container tweak ========= */
+.container.mt-5 {
   margin-top: 10px;
 }
 
-.enrollment-image {
-  width: 300px;
-  height: auto;
-  border-radius: 50%;
-  margin: 20px auto;
-}
-
-/* Requirements section */
-.container.mt-5 {
-  min-height: 200px;
-  margin-top: 100px;
-  margin-bottom: 200px;
-}
-
-/* Contact Form */
+/* ========= Contact Form ========= */
 .contact-form {
   background-color: #fff;
-  padding: 20px;
+  padding: 22px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   width: 100%;
-  max-width: 400px;
-  text-align: center;
-  margin: 100px auto;
-}
-
-.contact-form h2 {
-  margin-bottom: 20px;
-}
-
-.contact-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+  max-width: 480px;
   text-align: left;
 }
-
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
 .contact-form input,
 .contact-form textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 15px;
 }
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: #4CAF50;
-}
-
 .contact-form button {
   background-color: #4CAF50;
   color: white;
-  padding: 10px 15px;
+  padding: 10px 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
   width: 100%;
+  font-size: 16px;
 }
-
 .contact-form button:hover {
   background-color: #45a049;
 }
 
-/* Footer */
-footer {
+/* ========= Footer ========= */
+.footer {
   background-color: #013220;
   color: white;
   text-align: center;
-  font-size: 14px;
-  line-height: 1.2;
   padding: 20px 10px;
+  font-size: 14px;
 }
+.footer a { color: #fff; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
 
-footer p {
-  margin: 5px 0;
-}
-
-footer a {
-  color: white;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive adjustments */
+/* ========= Responsive tweaks ========= */
 @media (max-width: 992px) {
-  .enrollment {
-    flex-direction: column;
-    text-align: center;
-  }
-  .enrollment-text {
-    margin: 10px 0;
-  }
-  .enrollment-image {
-    margin: 20px auto;
-  }
+  h1 { font-size: 22px; }
+  .enrollment-text h2 { font-size: 28px; }
 }
-
 @media (max-width: 768px) {
-  p {
-    margin: 20px;
-    padding: 20px;
-  }
-  .logo-content {
-    width: 200px;
-    height: 200px;
-  }
-  .carousel-item img {
-    max-width: 100%;
-    height: auto;
-  }
-  .enrollment-text h2 {
-    font-size: 30px;
-  }
+  .logo-topnav { height: 36px; }
+  .logo-content { max-width: 200px; }
+  .carousel-title { font-size: 18px; }
+  .enrollment-image { max-width: 220px; }
+  .section { padding-top: 70px; padding-bottom: 30px; }
+}
+@media (max-width: 576px) {
+  .fbnshs { font-size: 13px; }
+  .enrollment-text h2 { font-size: 22px; }
+  .contact-form { padding: 16px; }
 }
