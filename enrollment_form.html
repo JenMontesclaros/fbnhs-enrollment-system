@@ -215,7 +215,7 @@
   </div>
 
   <script>
-  document.getElementById("enrollmentForm").addEventListener("submit", function(e){
+document.getElementById("enrollmentForm").addEventListener("submit", function(e){
   e.preventDefault();
 
   // Generate Enrollment Code (5 random digits)
@@ -266,16 +266,17 @@ Please keep this receipt for official record.`;
   link.click();
 }
 
-    }
+// Restrict input fields to numbers only
+document.querySelectorAll(".numeric-only").forEach(input => {
+  input.addEventListener("keypress", function(e) {
+    if (!/[0-9]/.test(e.key)) e.preventDefault();
+  });
+});
+</script>
 
-    document.querySelectorAll(".numeric-only").forEach(input => {
-      input.addEventListener("keypress", function(e) {
-        if (!/[0-9]/.test(e.key)) e.preventDefault();
-      });
-    });
-  </script>
 </body>
 </html>
+
 
 
 
