@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth; /* smooth scroll animation */
+}
+
 .fbnshs {
   color: white;
   font-style: italic;
@@ -12,34 +16,43 @@
   display: inline;
 }
 
-/* Top navigation logo */
-.logo-topnav {
-  height: 40px;
-  margin-right: 8px;
+/* Sticky Navigation Bar */
+#topnav {
+  background-color: hsl(158, 96%, 10%);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1030;
 }
 
-/* Bootstrap Navbar Overrides */
-.navbar-nav .nav-link {
+#topnav .navbar-brand {
+  font-weight: bold;
+  color: white;
+}
+
+#topnav .navbar-toggler {
+  border-color: rgba(255,255,255,0.3);
+}
+
+#topnav .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+#navbarNav .nav-link {
   color: white !important;
-  font-size: 16px;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
 }
 
-.navbar-nav .nav-link:hover {
-  background-color: #0d0e0d;
-  border-radius: 5px;
+#navbarNav .nav-link:hover {
+  color: #FFD700 !important; /* hover effect */
 }
 
-.navbar-toggler {
-  border-color: white;
+/* Scrollspy active link highlight */
+#navbarNav .nav-link.active {
+  color: #FFD700 !important;
+  font-weight: bold;
 }
 
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' 
-  xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' 
-  stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 
-  15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
+/* Content Section */
 .content {
   padding: 20px;
   display: flex;
@@ -58,14 +71,22 @@ p {
   text-align: justify;
   margin: 70px;
   padding: 60px;
-  font-family: sans-serif;  
+  font-family: sans-serif;
 }
 
+/* Top navigation logo */
+.logo-topnav {
+  height: 50px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* Content logo */
 .logo-content {
   width: 300px;
   height: 300px;
   display: block;
-  margin: 70px auto 60px;
+  margin: 70px auto 60px auto;
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(5, 5, 5, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
   overflow: hidden;
@@ -85,6 +106,7 @@ p {
   margin-bottom: 15px;
 }
 
+/* Carousel */
 .carousel {
   margin: 0 auto;
   max-width: 800px;
@@ -92,27 +114,17 @@ p {
   overflow: hidden;
 }
 
+/* Carousel images */
 .carousel-item img {
   object-fit: cover;
   width: 100%;
   height: auto;
+  max-width: 550px;
+  max-height: 550px;
   margin: 0 auto;
-  display: block;
 }
 
-.carousel-caption {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  width: 90%;
-  text-align: left;
-}
-
+/* Carousel indicators */
 .carousel-indicators li {
   background-color: #ffffff;
   bottom: 0;
@@ -125,20 +137,21 @@ p {
   border-radius: 50%;
 }
 
+/* Enrollment Section */
 .enrollment {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #3c9e37;
   padding: 20px;
-  height: auto;
   flex-wrap: wrap;
-  text-align: center;
 }
 
 .enrollment-text {
+  text-align: center;
   color: white;
-  margin: 20px auto;
+  flex: 1;
+  margin: 20px;
 }
 
 .enrollment-text h2 {
@@ -161,13 +174,16 @@ p {
   height: auto;
   border-radius: 50%;
   margin: 20px auto;
-  display: block;
 }
 
+/* Requirements section */
 .container.mt-5 {
+  min-height: 200px;
+  margin-top: 100px;
   margin-bottom: 200px;
 }
 
+/* Contact Form */
 .contact-form {
   background-color: #fff;
   padding: 20px;
@@ -197,4 +213,81 @@ p {
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 16px
+  font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.contact-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+.contact-form button:hover {
+  background-color: #45a049;
+}
+
+/* Footer */
+footer {
+  background-color: #013220;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 20px 10px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .enrollment {
+    flex-direction: column;
+    text-align: center;
+  }
+  .enrollment-text {
+    margin: 10px 0;
+  }
+  .enrollment-image {
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  p {
+    margin: 20px;
+    padding: 20px;
+  }
+  .logo-content {
+    width: 200px;
+    height: 200px;
+  }
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  .enrollment-text h2 {
+    font-size: 30px;
+  }
+}
