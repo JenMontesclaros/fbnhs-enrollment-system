@@ -16,9 +16,13 @@
       <img src="logo.png" alt="FBNHS Logo" class="logo-topnav mr-2"> 
       <span class="fbnshs">FBNHS-SHS</span>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <!-- Hamburger button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Collapsible menu -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
@@ -48,7 +52,7 @@
 
   <!-- Offerings Section -->
   <div id="offerings" class="section carousel-container">
-    <h2 class="carousel-title">SENIOR HIGH SCHOOL OFFERINGS</h2>
+    <h2 class="carousel-title text-center">SENIOR HIGH SCHOOL OFFERINGS</h2>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -97,8 +101,7 @@
   <div id="requirements" class="section container py-5">
     <h2 class="text-center font-weight-bold">Enrollment Requirements and Procedures</h2>
     <div class="accordion mt-4" id="enrollmentAccordion">
-      <!-- Accordion Cards (same content as yours, no changes) -->
-      <!-- Enrollment Procedure -->
+      <!-- Example Accordion Item -->
       <div class="card">
         <div class="card-header" id="headingOne">
           <h5>
@@ -111,11 +114,10 @@
           <div class="card-body">
             Step 1: Proceed to the Senior High School campus... <br>
             Step 2: Show your enrollment code... <br>
-            <!-- shortened for brevity -->
+            Step 3: Submit requirements...
           </div>
         </div>
       </div>
-      <!-- Add your other accordion items here unchanged -->
     </div>
   </div>
 
