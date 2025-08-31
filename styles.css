@@ -14,7 +14,7 @@ html {
   padding-top: 60px;
 }
 
-/* ✅ Navbar Styling */
+/* Navbar Styling */
 .navbar {
   background-color: rgba(1, 50, 32, 0.8); /* semi-transparent green */
   transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
@@ -57,7 +57,7 @@ html {
   color: #d4edda !important; /* light green hover */
 }
 
-/* ✅ Mobile Adjustments */
+/* Mobile Adjustments */
 @media (max-width: 768px) {
   .navbar {
     background-color: #013220 !important; /* solid on mobile */
@@ -109,7 +109,7 @@ p {
   overflow: hidden;
 }
 
-/* ✅ Carousel container */
+/* Carousel container */
 .carousel-container {
   text-align: center;
   background-color: #2e7d32;
@@ -123,7 +123,7 @@ p {
   margin-bottom: 15px;
 }
 
-/* ✅ Carousel images */
+/* Carousel images */
 .carousel-item img {
   object-fit: cover;
   width: 100%;
@@ -133,7 +133,7 @@ p {
   margin: auto;
 }
 
-/* ✅ Enrollment */
+/* Enrollment */
 .enrollment {
   display: flex;
   align-items: center;
@@ -171,7 +171,7 @@ p {
   margin-right: 80px;
 }
 
-/* ✅ Contact form */
+/* Contact form */
 .contact-form {
   background-color: #fff;
   padding: 20px;
@@ -215,7 +215,7 @@ p {
   background-color: #45a049;
 }
 
-/* ✅ Footer */
+/* Footer */
 footer {
   background-color: #013220;
   color: white;
@@ -239,4 +239,5 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
 
