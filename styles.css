@@ -78,6 +78,66 @@
 
 }
 
+
+
+
+
+
+
+/* ✅ Navbar base (desktop view) */
+.navbar {
+  background-color: rgba(1, 50, 32, 0.8); /* semi-transparent green */
+  transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding: 15px 20px;
+}
+
+.navbar.scrolled {
+  background-color: #013220 !important; /* solid green when scrolled */
+  padding: 8px 20px; /* shrink padding on scroll */
+}
+
+.navbar-brand img {
+  height: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link {
+  font-size: 16px;
+  padding: 10px 15px;
+  color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #d4edda !important; /* light green hover */
+}
+
+/* ✅ Mobile navbar adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    background-color: #013220 !important; /* solid green on mobile */
+    padding: 10px 15px;
+  }
+  .navbar-brand img {
+    height: 35px; /* smaller logo */
+  }
+  .navbar-nav .nav-link {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .center {
   display: block;
   margin-left: auto;
@@ -353,4 +413,5 @@ html {
   padding-top: 60px;
   min-height: 200px;
 }
+
 
