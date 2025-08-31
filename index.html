@@ -1,309 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pre-Enrollment Form</title>
-
-  <!-- ✅ Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <style>
-    body {
-      background-color: #f1f1f1;
-      padding: 40px 0;
-    }
-
-    .form-container {
-      max-width: 800px;
-      margin: auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    h2, h3 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .required {
-      color: red;
-    }
-
-    #receiptBox {
-      display: none;
-      background: white;
-      border: 2px solid #333;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 8px;
-    }
-
-    #receiptBox h2, #receiptBox h3 {
-      text-align: center;
-      margin: 5px 0;
-    }
-
-    #receiptBox p {
-      text-align: center;
-      margin: 5px 0;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F. Bangoy Online Enrollment System</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="form-container">
-    <!-- ✅ Updated link -->
-    <a href="https://jenmontesclaros.github.io/fbnhs-enrollment-system/" class="btn btn-link mb-3">← Back to Main Page</a>
 
-    <h2>FBNHS-SHS PRE-ENROLLMENT FORM</h2>
-    <h3>SY: 2026-2027</h3>
-
-    <form id="enrollmentForm" class="row g-3">
-      <!-- Student Name -->
-      <div class="col-12">
-        <label class="form-label">Student Name <span class="required">*</span></label>
-        <div class="row g-2">
-          <div class="col-md"><input type="text" class="form-control" placeholder="Surname" name="student_surname" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="First Name" name="student_first" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Middle Name" name="student_middle"></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Suffix" name="student_suffix"></div>
-        </div>
-      </div>
-
-      <!-- LRN -->
-      <div class="col-12">
-        <label class="form-label">LRN <span class="required">*</span></label>
-        <input type="text" class="form-control numeric-only" name="lrn" maxlength="12" minlength="12" required placeholder="12-digit LRN">
-      </div>
-
-      <!-- Track -->
-      <div class="col-md-6">
-        <label class="form-label">Track <span class="required">*</span></label>
-        <select name="track" class="form-select" required>
-          <option value="">-- Select Track --</option>
-          <option value="HUMSS">Humanities and Social Sciences (HUMSS)</option>
-          <option value="ABM">Accountancy, Business, and Management (ABM)</option>
-          <option value="TVL - ICT">TVL - Information Communication Technology</option>
-          <option value="TVL - Cookery">TVL - Cookery</option>
-          <option value="TVL - FBS">TVL - Food and Beverage Services</option>
-        </select>
-      </div>
-
-      <!-- Sex -->
-      <div class="col-md-6">
-        <label class="form-label">Sex <span class="required">*</span></label>
-        <select name="sex" class="form-select" required>
-          <option value="">-- Select --</option>
-          <option>Male</option>
-          <option>Female</option>
-        </select>
-      </div>
-
-      <!-- DOB + Age -->
-      <div class="col-md-6">
-        <label class="form-label">Date of Birth <span class="required">*</span></label>
-        <input type="date" name="dob" class="form-control" required>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Age <span class="required">*</span></label>
-        <input type="text" name="age" maxlength="2" required class="form-control numeric-only" readonly>
-      </div>
-
-      <!-- IP -->
-      <div class="form-group">
-        <label>Belonging to Indigenous People (IP) <span class="required">*</span></label>
-        <select name="ip" required>
-          <option value="">-- Select --</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-      </div>
-
-      <!-- 4Ps -->
-      <div class="form-group">
-        <label>Is your family beneficiary of 4P's <span class="required">*</span></label>
-        <select name="fourps" required>
-          <option value="">-- Select --</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-      </div>
-
-      <!-- SPED -->
-      <div class="form-group">
-        <label>Learners with Special Education needs? <span class="required">*</span></label>
-        <select name="sped" required>
-          <option value="">-- Select --</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-      </div>
-
-      <!-- Address -->
-      <div class="col-12">
-        <label class="form-label">Address <span class="required">*</span></label>
-        <input type="text" class="form-control mb-2" placeholder="Street/Barangay" name="address1" required>
-        <input type="text" class="form-control mb-2" placeholder="District/Municipality" name="address2" required>
-        <input type="text" class="form-control mb-2" placeholder="City/Province" name="address3" required>
-        <input type="text" class="form-control numeric-only" placeholder="Zip Code" name="zip" maxlength="4" required>
-      </div>
-
-      <!-- Contact -->
-      <div class="col-md-6">
-        <label class="form-label">Contact Number <span class="required">*</span></label>
-        <input type="text" class="form-control numeric-only" name="contact" maxlength="11" minlength="11" required placeholder="11-digit number">
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Email Address</label>
-        <input type="email" class="form-control" name="email" placeholder="name@example.com">
-      </div>
-
-      <!-- Father -->
-      <div class="col-12">
-        <label class="form-label">Father's Name <span class="required">*</span></label>
-        <div class="row g-2">
-          <div class="col-md"><input type="text" class="form-control" placeholder="Surname" name="father_surname" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="First Name" name="father_first" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Middle Name" name="father_middle" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Suffix" name="father_suffix"></div>
-        </div>
-      </div>
-
-      <!-- Mother -->
-      <div class="col-12">
-        <label class="form-label">Mother's Name <span class="required">*</span></label>
-        <div class="row g-2">
-          <div class="col-md"><input type="text" class="form-control" placeholder="Surname" name="mother_surname" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="First Name" name="mother_first" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Middle Name" name="mother_middle" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Suffix" name="mother_suffix"></div>
-        </div>
-      </div>
-
-      <!-- Guardian -->
-      <div class="col-12">
-        <label class="form-label">Guardian's Name <span class="required">*</span></label>
-        <div class="row g-2">
-          <div class="col-md"><input type="text" class="form-control" placeholder="Surname" name="guardian_surname" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="First Name" name="guardian_first" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Middle Name" name="guardian_middle" required></div>
-          <div class="col-md"><input type="text" class="form-control" placeholder="Suffix" name="guardian_suffix"></div>
-        </div>
-      </div>
-
-      <div class="col-12">
-        <button type="submit" class="btn btn-success w-100">Submit</button>
-      </div>
-    </form>
-
-    <!-- Receipt Box -->
-    <div id="receiptBox" class="mt-4">
-      <h2>FBNHS - Senior High School</h2>
-      <h3>Pre-Enrollment Receipt</h3>
-      <p>SY: 2026-2027</p>
-      <p><strong>Enrollment ID:</strong> <span id="enrollmentID"></span></p>
-      <p><strong>Student Name:</strong> <span id="studentName"></span></p>
-      <p><strong>Issued:</strong> <span id="issuedDate"></span></p>
-      <p class="text-muted mt-3">Please keep this receipt for official record.</p>
-      <div class="d-flex justify-content-center gap-2">
-        <button onclick="window.print()" class="btn btn-primary">Print Receipt</button>
-        <button onclick="downloadReceipt()" class="btn btn-secondary">Download Receipt</button>
+  <!-- Navbar sits above all sections -->
+  <div id="topnav" class="topnav">
+    <img src="logo.png" alt="FBNHS Logo" class="logo-topnav"> 
+    <span class="fbnshs"> FBNHS-SHS</span>
+    <div class="container">
+      <div class="nav-bar">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#offerings">SHS Offerings</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#enrollment">Enrollment Form</a>
+        <a href="#contact">Contact Us</a>
       </div>
     </div>
   </div>
 
-  <script>
-document.getElementById("enrollmentForm").addEventListener("submit", function(e){
-  e.preventDefault();
+  <div class="main-content">
+    <!-- Main content goes here -->
+  </div>
 
-  // --- VALIDATION ---
-  const lrn = document.querySelector("[name='lrn']").value.trim();
-  const contact = document.querySelector("[name='contact']").value.trim();
-  const dob = document.querySelector("[name='dob']").value;
+  <div class="bg-design">
+    <div id="about" class="section">
+      <div class="content">
+        <img src="logo.png" alt="FBNHS Logo" class="logo-content">
+        <h1>Francisco Bangoy National High School <br> Senior High School</h1>
+        <p>
+          Francisco Bangoy National High School is a public school started in 1969 as a Barrio Extension High School of Davao City Nat'l High School. In 1973, it became Barangay High School when it was subsidized by the City Government of Davao under the leadership of the newly installed Mayor Elias B. Lopez.
+          <br><br>
+          In 1988, putting up of the first public high school in Sasa was realized. It was named FRANCISCO BANGOY HIGH SCHOOL due to urgent need to cater the growing high school population having only DCNHS.
+          The late Paciano V. Bangoy, son of the renowned Francisco B. Bangoy, donated 1 hectare-lot which was utilized for the general purpose of putting up a school (both elem. and secondary) in the area.
+          <br><br>
+          In 1988, by virtue of Republic Act No. 6655 known as the FREE SECONDARY EDUCATION ACT of 1988, all barangay high schools were converted into NATIONAL HIGH SCHOOLS in which funding for the School's operation and teacher's salary would since then be provided by the national government.
+          <br><br>
+          Due to its growing population with limited area (2,849 sq. m.), FBNHS has two annex campuses in Lanang (1990) and Malagamot (1994). However, the Lanang campus was GRANTED AUTONOMY and is now known as the RAMOS NATIONAL HIGH SCHOOL. The latter DR. SANTIAGO DAKUDAO SR. NATIONAL HIGH SCHOOL's autonomy is on process of legislation.
+        </p>
+      </div>
+    </div>
+  </div>
 
-  // ✅ LRN validation (12 digits)
-  if (!/^\d{12}$/.test(lrn)) {
-    alert("LRN must be exactly 12 digits.");
-    return;
-  }
+  <div id="offerings" class="section">
+    <!-- SHS Offerings section content -->
+    <div class="carousel-container">
+      <div class="carousel-title">SENIOR HIGH SCHOOL OFFERINGS</div>
 
-  // ✅ Contact validation (must start with 09 and be 11 digits)
-  if (!/^09\d{9}$/.test(contact)) {
-    alert("Contact number must be 11 digits and start with 09.");
-    return;
-  }
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
 
-  // ✅ Auto-calculate Age
-  if (dob) {
-    const birthDate = new Date(dob);
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    document.querySelector("[name='age']").value = age;
-  }
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="bread-pastry.png" class="d-block w-100" alt="Bread and Pastry">
+          </div>
+          <div class="carousel-item">
+            <img src="ict.png" class="d-block w-100" alt="Information Communication Technology">
+          </div>
+          <div class="carousel-item">
+            <img src="cookery.png" class="d-block w-100" alt="Cookery">
+          </div>
+          <div class="carousel-item">
+            <img src="piB-N_care.png" class="d-block w-100" alt="Beauty Care">
+            <img src="B-N_care.png" class="d-block w-100" alt="Beauty Care">
+          </div>
+          <div class="carousel-item">
+            <img src="electrical-IM.png" class="d-block w-100" alt="Electrical Installation Management">
+          </div>
+          <div class="carousel-item">
+            <img src="FBS.png" class="d-block w-100" alt="Food and Beverage Services">
+          </div>
+          <div class="carousel-item">
+            <img src="humss.png" class="d-block w-100" alt="Humanities and Social Sciences">
+          </div>
+          <div class="carousel-item">
+            <img src="abm.png" class="d-block w-100" alt="Accountancy Business and Management">
+          </div>
+          <div class="carousel-item">
+            <img src="HE.png" class="d-block w-100" alt="Home Economics">
+          </div>
+        </div>
 
-  // --- ENROLLMENT CODE GENERATION ---
-  const randomCode = Math.floor(10000 + Math.random() * 90000); 
-  const lrnSuffix = lrn.slice(-4); // last 4 digits of LRN
-  const enrollmentCode = "FBNHS-SHS-" + randomCode + "-LRN" + lrnSuffix;
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-  // Get student name
-  const first = document.querySelector("[name='student_first']").value;
-  const middle = document.querySelector("[name='student_middle']").value;
-  const surname = document.querySelector("[name='student_surname']").value;
-  const suffix = document.querySelector("[name='student_suffix']").value;
-  const fullName = surname + ", " + first + " " + (middle ? middle.charAt(0) + "." : "") + (suffix ? " " + suffix : "");
+  <div id="requirements" class="section">
+    <!-- Requirements section content -->
+    <div class="container mt-5">
+      <h2 class="text-center font-weight-bold">Enrollment Requirements and Procedures</h2>
+      <div class="accordion mt-4" id="enrollmentAccordion">
 
-  // Show receipt
-  document.getElementById("enrollmentID").textContent = enrollmentCode;
-  document.getElementById("studentName").textContent = fullName;
+        <!-- Enrollment Procedure -->
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <b>Enrollment Procedure</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#enrollmentAccordion">
+            <div class="card-body">
+              Step 1: Proceed to the Senior High School campus located at the KM 9 Paradise Drive, Sasa, Davao City for submission of requirements. <br>
+              Step 2: Show your printed or screenshot copy of your enrollment receipt from the online registration. <br>
+              Step 3: Submit the original copy of the school requirements found in the portal. <br>
+              Step 4: List the name of your section and class adviser. <br>
+              Step 5: Check your messenger for an invitation to your respective class group chat (GC). <br>
+              Step 6: Wait for further instructions to be posted in the GC. <br>
+              Step 7: Come back for the opening of class.
+            </div>
+          </div>
+        </div>
 
-  // Add date/time issued
-  const now = new Date();
-  const issuedDate = now.toLocaleString();
-  document.getElementById("issuedDate").textContent = issuedDate;
+        <!-- Requirements for FBNHS (JHS) Graduates -->
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <b>Requirements for FBNHS (JHS) Graduates</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#enrollmentAccordion">
+            <div class="card-body">
+              1. Original Copy of NSO/PSA Authenticated Birth Certificate. <br>
+              2. Original Copy of form 138 or Report card (last school year attended).
+            </div>
+          </div>
+        </div>
 
-  document.getElementById("receiptBox").style.display = "block";
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-});
+        <!-- Requirements for Transferees -->
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <b>Requirements for Transferees</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#enrollmentAccordion">
+            <div class="card-body">
+              1. Original Copy of NSO/PSA Authenticated Birth Certificate. <br>
+              2. Original Copy of Form 138 or Report Card (last school year attended). <br>
+              3. Certificate of Good Moral Character.
+            </div>
+          </div>
+        </div>
 
-// ✅ Download receipt as text file
-function downloadReceipt() {
-  const enrollmentCode = document.getElementById("enrollmentID").textContent;
-  const studentName = document.getElementById("studentName").textContent;
-  const issuedDate = document.getElementById("issuedDate").textContent;
+        <!-- Prospectus -->
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <b>Prospectus</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#enrollmentAccordion">
+            <div class="card-body">
+             Download the prospectus for each track here: <a href="Prospectus.xlsx" download>Prospectus.xlsx</a>
+            </div>
+          </div>
+        </div>
 
-  const receiptText =
-`FBNHS - Senior High School
-Pre-Enrollment Receipt
-SY: 2026-2027
+      </div>
+    </div>
+  </div>
 
-Enrollment Code: ${enrollmentCode}
-Student Name: ${studentName}
-Issued: ${issuedDate}
+  <!-- Enrollment Section -->
+  <div id="enrollment" class="section">
+    <div class="enrollment">
+      <div class="enrollment-text">
+        <h2><b>Enroll Now!</b></h2>
+        <a href="enrollment_form.html">
+          <button type="button" class="alert-button">Click Here</button>
+        </a>
+      </div>
+      <img src="person_with_pencil.png" alt="Person with pencil" class="enrollment-image">
+    </div>
+  </div>
 
-Please keep this receipt for official record.`;
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  const blob = new Blob([receiptText], { type: "text/plain" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "receipt.txt";
-  link.click();
-}
+  <!-- Contact Us Section -->
+  <div id="contact" class="section">
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form action="submit.php" method="POST">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="name@example.com" required>
 
-// ✅ Restrict input fields to numbers only
-document.querySelectorAll(".numeric-only").forEach(input => {
-  input.addEventListener("keypress", function(e) {
-    if (!/[0-9]/.test(e.key)) e.preventDefault();
-  });
-});
-  </script>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write Something..." required></textarea>
+
+          <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <p>Located at 4M93+6FG, J.P. Laurel Avenue, Buhangin, Davao City, Davao del Sur</p>
+    <p>For Student Enrollment Concerns, email us at <a href="mailto:FBNHS@gmail.com">FBNHS@gmail.com</a></p>
+    <p>or Contact us with our telephone Number: (082) 233 1255</p>
+    <p>&copy;2022 Francisco Bangoy National High School. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
 
