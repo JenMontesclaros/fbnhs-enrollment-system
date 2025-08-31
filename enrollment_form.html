@@ -8,6 +8,8 @@
   <!-- ✅ Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ✅ jsPDF for PDF receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
     body {
@@ -108,38 +110,38 @@
       </div>
       <div class="col-md-6">
         <label class="form-label">Age <span class="required">*</span></label>
-        <input type="text" name="age" maxlength="2" required placeholder="" class="form-control numeric-only">
+        <input type="text" name="age" maxlength="2" required class="form-control numeric-only" readonly>
       </div>
 
-    <!-- IP -->
-<div class="form-group">
-  <label>Belonging to Indigenous People (IP) <span class="required">*</span></label>
-  <select name="ip" required>
-    <option value="">-- Select --</option>
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-</div>
+      <!-- IP -->
+      <div class="col-md-4">
+        <label class="form-label">Belonging to Indigenous People (IP) <span class="required">*</span></label>
+        <select name="ip" class="form-select" required>
+          <option value="">-- Select --</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
 
-<!-- 4Ps -->
-<div class="form-group">
-  <label>Is your family beneficiary of 4P's <span class="required">*</span></label>
-  <select name="fourps" required>
-    <option value="">-- Select --</option>
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-</div>
+      <!-- 4Ps -->
+      <div class="col-md-4">
+        <label class="form-label">Is your family beneficiary of 4P's <span class="required">*</span></label>
+        <select name="fourps" class="form-select" required>
+          <option value="">-- Select --</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
 
-<!-- SPED -->
-<div class="form-group">
-  <label>Learners with Special Education needs? <span class="required">*</span></label>
-  <select name="sped" required>
-    <option value="">-- Select --</option>
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-</div>
+      <!-- SPED -->
+      <div class="col-md-4">
+        <label class="form-label">Learners with Special Education needs? <span class="required">*</span></label>
+        <select name="sped" class="form-select" required>
+          <option value="">-- Select --</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
 
       <!-- Address -->
       <div class="col-12">
@@ -203,24 +205,61 @@
       <h2>FBNHS - Senior High School</h2>
       <h3>Pre-Enrollment Receipt</h3>
       <p>SY: 2026-2027</p>
-      <p><strong>Enrollment ID:</strong> <span id="enrollmentID"></span></p>
+      <p><strong>Enrollment Code:</strong> <span id="enrollmentID"></span></p>
       <p><strong>Student Name:</strong> <span id="studentName"></span></p>
       <p><strong>Issued:</strong> <span id="issuedDate"></span></p>
       <p class="text-muted mt-3">Please keep this receipt for official record.</p>
       <div class="d-flex justify-content-center gap-2">
         <button onclick="window.print()" class="btn btn-primary">Print Receipt</button>
-        <button onclick="downloadReceipt()" class="btn btn-secondary">Download Receipt</button>
+        <button onclick="downloadReceipt()" class="btn btn-secondary">Download Receipt (PDF)</button>
+        <button onclick="newEnrollment()" class="btn btn-outline-success">New Enrollment</button>
       </div>
     </div>
   </div>
 
   <script>
-document.getElementById("enrollmentForm").addEventListener("submit", function(e){
+const form = document.getElementById("enrollmentForm");
+
+// ✅ Auto Age Calculation
+document.querySelector("[name='dob']").addEventListener("change", function() {
+  const dob = new Date(this.value);
+  if (!isNaN(dob)) {
+    const diff = Date.now() - dob.getTime();
+    const ageDate = new Date(diff);
+    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    document.querySelector("[name='age']").value = age;
+  }
+});
+
+// ✅ Form Submit
+form.addEventListener("submit", function(e){
   e.preventDefault();
 
-  // Generate Enrollment Code (5 random digits)
+  const lrn = document.querySelector("[name='lrn']").value;
+
+  // LRN check (12 digits only)
+  if (!/^[0-9]{12}$/.test(lrn)) {
+    alert("LRN must be exactly 12 digits.");
+    return;
+  }
+
+  // Contact check
+  const contact = document.querySelector("[name='contact']").value;
+  if (!/^09[0-9]{9}$/.test(contact)) {
+    alert("Contact number must start with 09 and be 11 digits.");
+    return;
+  }
+
+  // Prevent duplicate LRN (frontend simulation)
+  if (localStorage.getItem("LRN_" + lrn)) {
+    alert("This student is already enrolled!");
+    return;
+  }
+  localStorage.setItem("LRN_" + lrn, "enrolled");
+
+  // Generate Enrollment Code
   const randomCode = Math.floor(10000 + Math.random() * 90000); 
-  const enrollmentCode = "FBNHS-SHS " + randomCode;
+  const enrollmentCode = "FBNHS-SHS-" + randomCode + "-LRN" + lrn;
 
   // Get student name
   const first = document.querySelector("[name='student_first']").value;
@@ -233,51 +272,46 @@ document.getElementById("enrollmentForm").addEventListener("submit", function(e)
   document.getElementById("enrollmentID").textContent = enrollmentCode;
   document.getElementById("studentName").textContent = fullName;
 
-  // Add date/time issued
   const now = new Date();
-  const issuedDate = now.toLocaleString();
-  document.getElementById("issuedDate").textContent = issuedDate;
+  document.getElementById("issuedDate").textContent = now.toLocaleString();
 
   document.getElementById("receiptBox").style.display = "block";
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 });
 
-// Download receipt as text file
+// ✅ Download receipt as PDF
 function downloadReceipt() {
-  const enrollmentCode = document.getElementById("enrollmentID").textContent;
-  const studentName = document.getElementById("studentName").textContent;
-  const issuedDate = document.getElementById("issuedDate").textContent;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-  const receiptText =
-`FBNHS - Senior High School
-Pre-Enrollment Receipt
-SY: 2026-2027
+  doc.setFontSize(16);
+  doc.text("FBNHS - Senior High School", 20, 20);
+  doc.text("Pre-Enrollment Receipt", 20, 30);
+  doc.setFontSize(12);
+  doc.text("SY: 2026-2027", 20, 40);
 
-Enrollment Code: ${enrollmentCode}
-Student Name: ${studentName}
-Issued: ${issuedDate}
+  doc.text("Enrollment Code: " + document.getElementById("enrollmentID").textContent, 20, 55);
+  doc.text("Student Name: " + document.getElementById("studentName").textContent, 20, 65);
+  doc.text("Issued: " + document.getElementById("issuedDate").textContent, 20, 75);
 
-Please keep this receipt for official record.`;
+  doc.text("Please keep this receipt for official record.", 20, 95);
 
-  const blob = new Blob([receiptText], { type: "text/plain" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "receipt.txt";
-  link.click();
+  doc.save("enrollment_receipt.pdf");
 }
 
-// Restrict input fields to numbers only
+// ✅ New Enrollment
+function newEnrollment() {
+  form.reset();
+  document.getElementById("receiptBox").style.display = "none";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ✅ Restrict numeric-only inputs
 document.querySelectorAll(".numeric-only").forEach(input => {
   input.addEventListener("keypress", function(e) {
     if (!/[0-9]/.test(e.key)) e.preventDefault();
   });
 });
-</script>
-
+  </script>
 </body>
 </html>
-
-
-
-
-
