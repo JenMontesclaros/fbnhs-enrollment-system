@@ -415,3 +415,69 @@ html {
 }
 
 
+
+
+  /* ✅ Navbar Styling */
+.navbar {
+  background-color: rgba(1, 50, 32, 0.8); /* semi-transparent green */
+  transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding: 15px 20px;
+  font-family: sans-serif;
+}
+
+.navbar.scrolled {
+  background-color: #013220 !important; /* solid green when scrolled */
+  padding: 8px 20px; /* shrink padding */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 45px;
+  margin-right: 8px;
+  transition: height 0.3s ease-in-out;
+}
+
+.brand-text {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 16px;
+  color: white;
+}
+
+.navbar-nav .nav-link {
+  font-size: 16px;
+  padding: 10px 15px;
+  color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #d4edda !important; /* light green hover */
+}
+
+/* ✅ Mobile Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    background-color: #013220 !important; /* solid on mobile */
+    padding: 10px 15px;
+  }
+
+  .navbar-brand img {
+    height: 35px;
+  }
+
+  .brand-text {
+    font-size: 14px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+
+
+
