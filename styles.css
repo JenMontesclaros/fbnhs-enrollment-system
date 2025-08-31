@@ -221,8 +221,14 @@ footer {
   color: white;
   text-align: center;
   font-size: 14px;
-  line-height: 1.6;
-  padding: 15px 0;
+  line-height: 1.2;
+  padding: 5px 0;
+}
+
+footer p {
+  margin: 0;
+  padding: 5px 0;
+  text-align: center;
 }
 
 footer a {
@@ -233,3 +239,4 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
