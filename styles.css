@@ -168,7 +168,7 @@ p {
   width: 350px;
   height: auto;
   border-radius: 50%;
-  margin-right: 120px;
+  margin-right: 150px;
 }
 
 /* Contact form */
@@ -239,6 +239,7 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
 
 
 
