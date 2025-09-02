@@ -353,3 +353,18 @@ html {
   padding-top: 60px;
   min-height: 200px;
 }
+/* Accordion Styling */
+#enrollmentAccordion .card-header {
+  background-color: #2e7d32; /* Dark green header */
+}
+
+#enrollmentAccordion .btn-link {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#enrollmentAccordion .btn-link:hover {
+  color: #c8e6c9; /* Lighter green on hover */
+}
+
