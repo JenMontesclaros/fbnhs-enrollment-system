@@ -240,6 +240,64 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* ===== Accordion Styling (Green Theme) ===== */
+#enrollmentAccordion .card {
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#enrollmentAccordion .card-header {
+  background-color: #2e7d32; /* Dark green header */
+  padding: 0;
+}
+
+#enrollmentAccordion .btn-link {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff; /* White text */
+  text-decoration: none;
+}
+
+#enrollmentAccordion .btn-link:hover {
+  background-color: #388e3c; /* Slightly lighter green */
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Expanded header */
+#enrollmentAccordion .btn-link[aria-expanded="true"] {
+  background-color: #1b5e20; /* Darker green */
+}
+
+/* Accordion Body */
+#enrollmentAccordion .card-body {
+  background-color: #f9f9f9; /* Light background */
+  color: #333;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* ===== Custom Accordion Icons (Green) ===== */
+#enrollmentAccordion .btn-link::after {
+  content: '\25BC'; /* ▼ Down arrow */
+  float: right;
+  font-size: 14px;
+  color: #fff; /* White when closed */
+  transition: transform 0.3s ease;
+}
+
+#enrollmentAccordion .btn-link[aria-expanded="true"]::after {
+  transform: rotate(180deg); /* Flips arrow when open */
+  color: #d4f8d4; /* Light green when expanded */
+}
+
 
 
 
