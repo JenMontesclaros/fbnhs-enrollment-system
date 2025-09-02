@@ -2,10 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
-  
 }
-
 
 .fbnshs {
   color: white;
@@ -13,23 +10,18 @@
   font-size: 12px;
   font-weight: bold;
   display: inline;
-  
 }
 
 /* Navigation Bar */
 #topnav {
-   background-color: hsl(158, 96%, 10%);
+  background-color: hsl(158, 96%, 10%);
   overflow: hidden;
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  color: white; 
-  /*   position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */*/
-  
-  
-
+  color: white;
+  top: 0;
+  width: 100%;
 }
 
 #topnav a {
@@ -52,31 +44,18 @@
 /* Content */
 .content {
   padding: 20px;
- 
 }
 
 .container {
- 
   margin-bottom: 20px;
   margin-top: 20px;
- 
-
-
-
-  
 }
 
 .nav-bar {
   float: right;
-  
-  
 }
 
-.bg-design{
-
-
-
-}
+.bg-design {}
 
 .center {
   display: block;
@@ -103,8 +82,7 @@ p {
   text-align: justify;
   margin: 70px;
   padding: 60px;
-  font-family: sans-serif;  
-  
+  font-family: sans-serif;
 }
 
 /* Top navigation logo */
@@ -116,19 +94,16 @@ p {
 
 /* Content logo */
 .logo-content {
-  width: 300px;  /* Specify your desired width */
-  height: 300px; /* Specify your desired height */
+  width: 300px;
+  height: 300px;
   display: block;
   margin: 0 auto;
   margin-bottom: 60px;
   margin-top: 70px;
-  width: 300px; /* Adjust to the desired size */
-  height: 300px; /* Same as width to keep it circular */
-  border-radius: 50%; /* Makes the element circular */
+  border-radius: 50%;
   box-shadow: 0 4px 8px rgba(5, 5, 5, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-  overflow: hidden; /* Ensures content inside stays within the circular shape */
+  overflow: hidden;
 }
-
 
 /* Carousel container */
 .carousel-container {
@@ -136,11 +111,6 @@ p {
   background-color: #2e7d32;
   color: white;
   padding: 20px 0;
-  
-
- 
-
- 
 }
 
 .carousel-title {
@@ -160,10 +130,10 @@ p {
 /* Carousel images */
 .carousel-item img {
   object-fit: cover;
-  width: 100%;      /* Ensures the image scales to the width of the container */
-  height: auto;     /* Maintains aspect ratio */
-  max-width: 550px; /* Maximum width to prevent overscaling */
-  max-height: 550px; /* Adjust this if you want to control the maximum height */
+  width: 100%;
+  height: auto;
+  max-width: 550px;
+  max-height: 550px;
   margin-left: 140px;
 }
 
@@ -184,7 +154,7 @@ p {
 /* Carousel indicators */
 .carousel-indicators li {
   background-color: #ffffff;
-  bottom: 0; /* Make sure bottom is set to 0 */
+  bottom: 0;
   transform: translateY(25px);
 }
 
@@ -198,7 +168,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #3c9e37; /* Adjust the color as needed */
+  background-color: #3c9e37;
   padding: 20px;
   height: 500px;
 }
@@ -225,16 +195,15 @@ p {
 }
 
 .enrollment-image {
-  width: 400px; /* Adjust as needed */
+  width: 400px;
   height: auto;
   border-radius: 50%;
   margin-right: 500px;
 }
 
-.container.mt-5{
+.container.mt-5 {
   margin-bottom: 200px;
 }
-
 
 .contact-form {
   background-color: #fff;
@@ -244,9 +213,9 @@ p {
   width: 100%;
   max-width: 400px;
   text-align: center;
-  margin: 0 auto; /* This centers the form horizontally */
-    margin-top: 100px; 
-    margin-bottom: 100px;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .contact-form h2 {
@@ -291,13 +260,12 @@ p {
   background-color: #45a049;
 }
 
-
 footer {
-  background-color: #013220; /* Dark green background color */
+  background-color: #013220;
   color: white;
-  text-align: center; /* This ensures all text inside footer is centered */
+  text-align: center;
   font-size: 14px;
-  line-height: 1.2; /* Tighter line spacing */
+  line-height: 1.2;
 }
 
 footer p {
@@ -321,15 +289,14 @@ footer a:hover {
     text-align: center;
   }
 }
+
 .topnav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #fff; /* or your desired background */
+  background-color: #fff;
   padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* optional: adds a shadow when sticky */
-}
-.topnav {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
 }
 
@@ -343,7 +310,6 @@ iframe {
   margin-top: 100px;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -353,7 +319,8 @@ html {
   padding-top: 60px;
   min-height: 200px;
 }
-/* Accordion Styling */
+
+/* ✅ Accordion Styling */
 #enrollmentAccordion .card-header {
   background-color: #2e7d32; /* Dark green header */
 }
@@ -365,6 +332,5 @@ html {
 }
 
 #enrollmentAccordion .btn-link:hover {
-  color: #c8e6c9; /* Lighter green on hover */
+  color: #c8e6c9; /* Light green hover */
 }
-
