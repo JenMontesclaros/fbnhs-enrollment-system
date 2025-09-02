@@ -78,7 +78,7 @@ html {
   }
 }
 
-/* ✅ Content */
+/* Content */
 .content {
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@ p {
   text-align: justify;
 }
 
-/* ✅ Content logo */
+/* Content logo */
 .logo-content {
   width: 300px;
   height: 300px;
@@ -297,6 +297,7 @@ footer a:hover {
   transform: rotate(180deg); /* Flips arrow when open */
   color: #d4f8d4; /* Light green when expanded */
 }
+
 
 
 
