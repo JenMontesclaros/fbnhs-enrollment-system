@@ -168,8 +168,27 @@ p {
   width: 350px;
   height: auto;
   border-radius: 50%;
-  margin-right: 120px;
-  margin-right: 150px;
+  margin-right: 150px; /* ✅ removed duplicate */
+}
+
+/* Responsive Enrollment Fix */
+@media (max-width: 768px) {
+  .enrollment {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .enrollment-text {
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+
+  .enrollment-image {
+    margin: 0 auto;
+    width: 250px;
+  }
 }
 
 /* Contact form */
