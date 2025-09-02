@@ -250,9 +250,10 @@ footer a:hover {
 }
 
 #enrollmentAccordion .card-header {
-  background-color: #2EFF2E; /* Dark green header */
+  background-color: #2EFF2E; /* Bright green */
   padding: 0;
 }
+
 
 #enrollmentAccordion .btn-link {
   display: block;
@@ -297,6 +298,7 @@ footer a:hover {
   transform: rotate(180deg); /* Flips arrow when open */
   color: #d4f8d4; /* Light green when expanded */
 }
+
 
 
 
