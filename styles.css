@@ -116,8 +116,8 @@ p {
 
 /* Content logo */
 .logo-content {
-  width: 300px;  /* Specify your desired width */
-  height: 300px; /* Specify your desired height */
+  width: 200px;  /* Specify your desired width */
+  height: 200px; /* Specify your desired height */
   display: block;
   margin: 0 auto;
   margin-bottom: 60px;
@@ -353,3 +353,4 @@ html {
   padding-top: 60px;
   min-height: 200px;
 }
+
