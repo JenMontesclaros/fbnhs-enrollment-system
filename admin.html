@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - FBNHS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100vh;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #2c3e50;
+      padding-top: 20px;
+      transition: all 0.3s;
+    }
+
+    .sidebar a {
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #ecf0f1;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
+    .sidebar .active {
+      background-color: #1abc9c;
+      color: #fff;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    .card {
+      margin-bottom: 20px;
+    }
+
+    /* Responsive sidebar */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h4 class="text-center text-white">Admin Panel</h4>
+    <a href="#" class="active">Dashboard</a>
+    <a href="#">Enrollees</a>
+    <a href="#">Masterlist</a>
+    <a href="#">Messages</a>
+    <a href="#">Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container-fluid">
+
+      <!-- Dashboard Section -->
+      <h2>Dashboard</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <h5 class="card-title">Total Enrolled</h5>
+              <p class="card-text">123 Students</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h5 class="card-title">Male</h5>
+              <p class="card-text">65 Students</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-white bg-danger">
+            <div class="card-body">
+              <h5 class="card-title">Female</h5>
+              <p class="card-text">58 Students</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Welcome to the Admin Dashboard</h5>
+          <p>This is where you will manage enrollees, masterlists, and messages.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
 
