@@ -6,80 +6,34 @@
   <title>Admin Dashboard - FBNHS-SHS</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+  <!-- JS libraries for Export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      background: #f4f6f9;
-    }
+    body { font-family: 'Poppins', sans-serif; display: flex; background: #f4f6f9; margin:0; }
 
     /* Sidebar */
     .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 250px;
-      background: #f5f5f5; /* dirty white */
-      box-shadow: 2px 0 8px rgba(0,0,0,0.15);
-      padding-top: 20px;
-      transition: 0.3s;
+      position: fixed; top: 0; left: 0; height: 100%; width: 250px;
+      background: #f5f5f5; box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+      padding-top: 20px; transition: 0.3s;
     }
+    .sidebar img { display:block; margin:0 auto 15px; width:80px; border-radius:50%;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2);}
+    .sidebar h4 { text-align:center; margin-bottom:30px; color:#2d4c2d;}
+    .sidebar a { display:block; padding:12px 20px; color:#333; text-decoration:none;
+      font-weight:500; transition:0.3s;}
+    .sidebar a:hover { background:#2d4c2d; color:white; }
 
-    .sidebar img {
-      display: block;
-      margin: 0 auto 15px;
-      width: 80px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+    /* Content */
+    .content { margin-left:250px; padding:30px; width:100%; }
+    .section { padding:40px; background:white; margin-bottom:25px;
+      border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+    .section h2 { font-weight:bold; margin-bottom:20px; color:#2d4c2d; }
 
-    .sidebar h4 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #2d4c2d;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 12px 20px;
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      background: #2d4c2d;
-      color: white;
-    }
-
-    /* Main content */
-    .content {
-      margin-left: 250px;
-      padding: 30px;
-      width: 100%;
-    }
-
-    .section {
-      padding: 40px;
-      background: white;
-      margin-bottom: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .section h2 {
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #2d4c2d;
-    }
-
-    .btn-action {
-      margin-right: 10px;
-    }
+    .btn-action { margin-right:10px; }
+    .export-buttons { margin-top:15px; }
   </style>
 </head>
 <body>
@@ -95,57 +49,32 @@
     <a href="adminlogin.html"> Logout</a>
   </div>
 
-  <!-- Main Content -->
+  <!-- Content -->
   <div class="content">
 
     <!-- Dashboard -->
     <div id="dashboard" class="section">
-      <h2> Dashboard</h2>
-      <p>Overview of enrolled population, number of enrollees, and gender distribution.</p>
+      <h2>📊 Dashboard</h2>
       <div class="row text-center">
-        <div class="col-md-4">
-          <div class="p-4 bg-success text-white rounded">Total Enrollees<br><b>1,234</b></div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 bg-info text-white rounded">Male<br><b>600</b></div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 bg-warning text-white rounded">Female<br><b>634</b></div>
-        </div>
+        <div class="col-md-4"><div class="p-4 bg-success text-white rounded">Total Enrollees<br><b id="totalEnrollees">0</b></div></div>
+        <div class="col-md-4"><div class="p-4 bg-info text-white rounded">Male<br><b id="maleCount">0</b></div></div>
+        <div class="col-md-4"><div class="p-4 bg-warning text-white rounded">Female<br><b id="femaleCount">0</b></div></div>
       </div>
     </div>
 
     <!-- Enrollees -->
     <div id="enrollees" class="section">
-      <h2> Enrollees</h2>
-      <p>Submitted student enrollment forms. Admin can approve or decline.</p>
-      <table class="table table-bordered">
-        <thead class="thead-dark">
-          <tr>
-            <th>LRN</th>
-            <th>Name</th>
-            <th>Track/Strand</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+      <h2>📝 Enrollees</h2>
+      <table class="table table-bordered" id="enrolleesTable">
+        <thead class="thead-dark"><tr><th>LRN</th><th>Name</th><th>Track/Strand</th><th>Gender</th><th>Action</th></tr></thead>
         <tbody>
           <tr>
-            <td>123456789012</td>
-            <td>Juan Dela Cruz</td>
-            <td>ABM</td>
-            <td>
-              <button class="btn btn-success btn-sm btn-action">Approve</button>
-              <button class="btn btn-danger btn-sm btn-action">Decline</button>
-            </td>
+            <td>123456789012</td><td>Juan Dela Cruz</td><td>ABM</td><td>Male</td>
+            <td><button class="btn btn-success btn-sm approve">Approve</button><button class="btn btn-danger btn-sm decline">Decline</button></td>
           </tr>
           <tr>
-            <td>987654321098</td>
-            <td>Maria Santos</td>
-            <td>HUMSS</td>
-            <td>
-              <button class="btn btn-success btn-sm btn-action">Approve</button>
-              <button class="btn btn-danger btn-sm btn-action">Decline</button>
-            </td>
+            <td>987654321098</td><td>Maria Santos</td><td>HUMSS</td><td>Female</td>
+            <td><button class="btn btn-success btn-sm approve">Approve</button><button class="btn btn-danger btn-sm decline">Decline</button></td>
           </tr>
         </tbody>
       </table>
@@ -153,49 +82,112 @@
 
     <!-- Masterlist -->
     <div id="masterlist" class="section">
-      <h2> Masterlist</h2>
-      <p>View enrollees per track & strand. Download masterlist files.</p>
-      <ul>
-        <li>ABM - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
-        <li>HUMSS - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
-        <li>TVL-ICT - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
-        <li>Bread & Pastry - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
-      </ul>
+      <h2>📑 Masterlist</h2>
+      <div id="masterlistContent">
+        <h5>ABM</h5><ul id="abmList"></ul>
+        <h5>HUMSS</h5><ul id="humssList"></ul>
+        <h5>TVL-ICT</h5><ul id="ictList"></ul>
+        <h5>Bread & Pastry</h5><ul id="breadList"></ul>
+      </div>
+
+      <!-- Export Buttons -->
+      <div class="export-buttons">
+        <button class="btn btn-outline-primary" onclick="exportExcel()">📊 Export to Excel</button>
+        <button class="btn btn-outline-danger" onclick="exportPDF()">📄 Export to PDF</button>
+        <button class="btn btn-outline-success" onclick="exportCSV()">📝 Export to CSV</button>
+      </div>
     </div>
 
     <!-- Messages -->
     <div id="messages" class="section">
       <h2> Messages</h2>
-      <p>Messages or inquiries submitted by students from the Contact Us section.</p>
       <table class="table table-striped">
-        <thead class="thead-light">
-          <tr>
-            <th>Email</th>
-            <th>Message</th>
-            <th>Date</th>
-          </tr>
-        </thead>
+        <thead class="thead-light"><tr><th>Email</th><th>Message</th><th>Date</th></tr></thead>
         <tbody>
-          <tr>
-            <td>student1@email.com</td>
-            <td>Can I still enroll after the deadline?</td>
-            <td>Aug 28, 2025</td>
-          </tr>
-          <tr>
-            <td>student2@email.com</td>
-            <td>Where can I find my section list?</td>
-            <td>Aug 29, 2025</td>
-          </tr>
+          <tr><td>student1@email.com</td><td>Can I still enroll after the deadline?</td><td>Aug 28, 2025</td></tr>
+          <tr><td>student2@email.com</td><td>Where can I find my section list?</td><td>Aug 29, 2025</td></tr>
         </tbody>
       </table>
     </div>
-
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Scripts -->
+  <script>
+    // Approve / Decline
+    document.querySelectorAll(".approve").forEach(btn => {
+      btn.addEventListener("click", function () {
+        let row = this.closest("tr");
+        let lrn = row.cells[0].innerText;
+        let name = row.cells[1].innerText;
+        let track = row.cells[2].innerText;
+        let gender = row.cells[3].innerText;
 
+        // Add to Masterlist
+        let listId = track.toLowerCase() + "List";
+        let targetList = document.getElementById(listId);
+        if (targetList) {
+          let li = document.createElement("li");
+          li.innerText = `${name} (${lrn}) - ${gender}`;
+          targetList.appendChild(li);
+        }
+
+        // Update Dashboard
+        document.getElementById("totalEnrollees").innerText++;
+        if (gender === "Male") document.getElementById("maleCount").innerText++;
+        else document.getElementById("femaleCount").innerText++;
+
+        row.remove();
+      });
+    });
+
+    document.querySelectorAll(".decline").forEach(btn => {
+      btn.addEventListener("click", function () { this.closest("tr").remove(); });
+    });
+
+    // Export Functions
+    function collectMasterlist() {
+      let data = [];
+      document.querySelectorAll("#masterlistContent h5").forEach(section => {
+        let track = section.innerText;
+        let ul = section.nextElementSibling;
+        ul.querySelectorAll("li").forEach(li => {
+          data.push({ Track: track, Student: li.innerText });
+        });
+      });
+      return data;
+    }
+
+    function exportExcel() {
+      let data = collectMasterlist();
+      let ws = XLSX.utils.json_to_sheet(data);
+      let wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Masterlist");
+      XLSX.writeFile(wb, "Masterlist.xlsx");
+    }
+
+    async function exportPDF() {
+      const { jsPDF } = window.jspdf;
+      let doc = new jsPDF();
+      doc.setFontSize(14);
+      doc.text("FBNHS-SHS Masterlist", 10, 10);
+      let y = 20;
+      collectMasterlist().forEach(row => {
+        doc.text(`${row.Track}: ${row.Student}`, 10, y);
+        y += 8;
+      });
+      doc.save("Masterlist.pdf");
+    }
+
+    function exportCSV() {
+      let data = collectMasterlist();
+      let csv = "Track,Student\n";
+      data.forEach(r => { csv += `${r.Track},"${r.Student}"\n`; });
+      let blob = new Blob([csv], { type: "text/csv" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Masterlist.csv";
+      link.click();
+    }
+  </script>
 </body>
 </html>
