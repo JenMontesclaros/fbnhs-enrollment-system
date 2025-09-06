@@ -13,23 +13,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #f4f4f4;
+      background: #222; /* fallback background */
       position: relative;
       overflow: hidden;
     }
 
-    /* Centered fixed background logo */
+    /* ✅ Replace random image with fixed logo */
     body::before {
       content: "";
-      position: fixed; /* stays in place even if scrolling */
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: url('logo.png') no-repeat center center;
-      background-size: 320px; /* slightly bigger */
-      width: 320px;
-      height: 320px;
-      opacity: 0.25; /* increased visibility */
+      background-size: 300px;
+      width: 300px;
+      height: 300px;
+      opacity: 0.15; /* subtle watermark effect */
       z-index: 0;
     }
 
@@ -44,7 +44,7 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       animation: fadeIn 1.2s ease-in-out;
       position: relative;
-      z-index: 1; /* above the background logo */
+      z-index: 1; /* keeps form above logo */
     }
 
     .login-container h2 {
