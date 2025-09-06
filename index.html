@@ -7,22 +7,10 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-  <style>
-    /* Navbar scroll effect */
-    .navbar {
-      transition: background-color 0.3s ease, padding 0.3s ease;
-      background-color: rgba(1, 50, 32, 0.6) !important; /* Semi-transparent green */
-    }
-    .navbar.scrolled {
-      background-color: rgba(1, 50, 32, 0.95) !important; /* Darker on scroll */
-      padding: 10px 20px;
-    }
-  </style>
 </head>
 <body id="home">
 
-<!-- Sticky Responsive Navbar -->
+<!--  Sticky Responsive Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container">
     <!-- Logo + School Name -->
@@ -40,24 +28,22 @@
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item"><a class="nav-link" href="#home">Home</a></li> -->
         <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="#offerings">SHS Offerings</a></li>
         <li class="nav-item"><a class="nav-link" href="#requirements">Requirements</a></li>
         <li class="nav-item"><a class="nav-link" href="#enrollment">Enrollment Form</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
-      </ul>
-
-      <!-- Admin Login aligned RIGHT -->
-      <ul class="navbar-nav ml-auto">
+        <!-- Admin Login button (aligned right) -->
         <li class="nav-item">
-          <a class="nav-link btn btn-outline-light px-3" href="adminlogin.html">Admin Login</a>
+          <a class="nav-link btn btn-outline-light px-3 ml-2" href="adminlogin.html">Admin Login</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-    
-<!-- About Section -->
+
+<!--  About Section -->
 <div id="about" class="section">
   <div class="content">
     <img src="logo.png" alt="FBNHS Logo" class="logo-content">
@@ -66,13 +52,15 @@
       Francisco Bangoy National High School is a public school started in 1969 as a Barrio Extension High School of Davao City Nat'l High School. In 1973, it became Barangay High School when it was subsidized by the City Government of Davao under the leadership of the newly installed Mayor Elias B. Lopez.
       In 1988, putting up of the first public high school in Sasa was realized. It was named FRANCISCO BANGOY HIGH SCHOOL due to urgent need to cater the growing high school population having only DCNHS.
       The late Paciano V. Bangoy, son of the renowned Francisco B. Bangoy, donated 1 hectare-lot which was utilized for the general purpose of putting up a school (both elem. and secondary) in the area.
+      <br><br>
       In 1988, by virtue of Republic Act No. 6655 known as the FREE SECONDARY EDUCATION ACT of 1988, all barangay high schools were converted into NATIONAL HIGH SCHOOLS in which funding for the School's operation and teacher's salary would since then be provided by the national government.
+      <br><br>
       Due to its growing population with limited area (2,849 sq. m.), FBNHS has two annex campuses in Lanang (1990) and Malagamot (1994). However, the Lanang campus was GRANTED AUTONOMY and is now known as the RAMOS NATIONAL HIGH SCHOOL. The latter DR. SANTIAGO DAKUDAO SR. NATIONAL HIGH SCHOOL's autonomy is on process of legislation.
     </p>
   </div>
 </div>
 
-<!-- SHS Offerings Section -->
+<!--  SHS Offerings Section -->
 <div id="offerings" class="section">
   <div class="carousel-container">
     <div class="carousel-title">SENIOR HIGH SCHOOL OFFERINGS</div>
@@ -98,6 +86,7 @@
 <div id="requirements" class="section">
   <div class="container mt-5">
     <h2 class="text-center font-weight-bold">Enrollment Requirements and Procedures</h2>
+
     <div class="accordion mt-4" id="enrollmentAccordion">
 
       <!-- Enrollment Procedure -->
@@ -178,7 +167,7 @@
   </div>
 </div>
 
-<!-- Enrollment Section -->
+<!--  Enrollment Section -->
 <div id="enrollment" class="section">
   <div class="enrollment">
     <div class="enrollment-text">
@@ -191,7 +180,7 @@
   </div>
 </div>
 
-<!-- Contact Us Section -->
+<!--  Contact Us Section -->
 <div id="contact" class="section">
   <div class="contact-form">
     <h2>Contact Us</h2>
@@ -207,7 +196,7 @@
   </div>
 </div>
 
-<!-- Footer -->
+<!--  Footer -->
 <footer>
   <p>Located at 4M93+6FG, J.P. Laurel Avenue, Buhangin, Davao City</p>
   <p>Email us: <a href="mailto:FBNHS@gmail.com">FBNHS@gmail.com</a></p>
@@ -215,12 +204,12 @@
   <p>&copy;2022 Francisco Bangoy National High School. All rights reserved.</p>
 </footer>
 
-<!-- Bootstrap + jQuery -->
+<!--  Bootstrap + jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- Navbar Scroll Effect -->
+<!--  Navbar Scroll Effect -->
 <script>
   window.addEventListener("scroll", function () {
     let navbar = document.querySelector(".navbar");
@@ -230,4 +219,3 @@
 
 </body>
 </html>
-
