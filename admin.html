@@ -3,95 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login Page</title>
+  <title>Admin Dashboard - FBNHS-SHS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
   <style>
     body {
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
-      height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background: url('logo.png') no-repeat center center;
-      background-size: 50%; /* covers 50% of the screen */
-      background-attachment: fixed;
-      background-color: #f4f4f4;
+      background: #f4f6f9;
     }
-    .login-container {
-      background: rgba(255, 255, 255, 0.85); /* dirty white with higher opacity */
-      border-radius: 20px;
-      padding: 40px;
-      width: 350px;
-      text-align: center;
-      color: #333;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    .login-container h2 {
-      margin-bottom: 20px;
-      font-size: 28px;
-      color: #2c3e50;
-    }
-    .login-container input {
-      width: 100%;
-      padding: 12px;
-      margin: 12px 0;
-      border: none;
-      border-radius: 10px;
-      outline: none;
-      font-size: 16px;
-      background: rgba(255, 255, 255, 0.9);
-    }
-    .login-container button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #28a745, #218838);
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      margin-top: 15px;
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background: #f5f5f5; /* dirty white */
+      box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+      padding-top: 20px;
       transition: 0.3s;
     }
-    .login-container button:hover {
-      background: linear-gradient(135deg, #1e7e34, #145c2e);
+
+    .sidebar img {
+      display: block;
+      margin: 0 auto 15px;
+      width: 80px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    .extra {
-      margin-top: 15px;
-      font-size: 14px;
+
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2d4c2d;
     }
-    .extra a {
-      color: #28a745;
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #333;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      transition: 0.3s;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    .sidebar a:hover {
+      background: #2d4c2d;
+      color: white;
+    }
+
+    /* Main content */
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+      width: 100%;
+    }
+
+    .section {
+      padding: 40px;
+      background: white;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #2d4c2d;
+    }
+
+    .btn-action {
+      margin-right: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Welcome Back</h2>
-    <form onsubmit="loginRedirect(event)">
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <div class="extra">
-      <p>Forgot your password? <a href="#">Reset</a></p>
-      <p>New here? <a href="#">Create Account</a></p>
-    </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logo.png" alt="FBNHS Logo">
+    <h4>Admin Panel</h4>
+    <a href="#dashboard"> Dashboard</a>
+    <a href="#enrollees"> Enrollees</a>
+    <a href="#masterlist"> Masterlist</a>
+    <a href="#messages"> Messages</a>
+    <a href="adminlogin.html"> Logout</a>
   </div>
 
-  <script>
-    function loginRedirect(event) {
-      event.preventDefault();
-      window.location.href = "admindashboard.html"; // redirect after "login"
-    }
-  </script>
+  <!-- Main Content -->
+  <div class="content">
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="section">
+      <h2> Dashboard</h2>
+      <p>Overview of enrolled population, number of enrollees, and gender distribution.</p>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="p-4 bg-success text-white rounded">Total Enrollees<br><b>1,234</b></div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-info text-white rounded">Male<br><b>600</b></div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-warning text-white rounded">Female<br><b>634</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enrollees -->
+    <div id="enrollees" class="section">
+      <h2> Enrollees</h2>
+      <p>Submitted student enrollment forms. Admin can approve or decline.</p>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>LRN</th>
+            <th>Name</th>
+            <th>Track/Strand</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>123456789012</td>
+            <td>Juan Dela Cruz</td>
+            <td>ABM</td>
+            <td>
+              <button class="btn btn-success btn-sm btn-action">Approve</button>
+              <button class="btn btn-danger btn-sm btn-action">Decline</button>
+            </td>
+          </tr>
+          <tr>
+            <td>987654321098</td>
+            <td>Maria Santos</td>
+            <td>HUMSS</td>
+            <td>
+              <button class="btn btn-success btn-sm btn-action">Approve</button>
+              <button class="btn btn-danger btn-sm btn-action">Decline</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Masterlist -->
+    <div id="masterlist" class="section">
+      <h2> Masterlist</h2>
+      <p>View enrollees per track & strand. Download masterlist files.</p>
+      <ul>
+        <li>ABM - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
+        <li>HUMSS - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
+        <li>TVL-ICT - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
+        <li>Bread & Pastry - <a href="#">Download Excel</a> | <a href="#">Download PDF</a></li>
+      </ul>
+    </div>
+
+    <!-- Messages -->
+    <div id="messages" class="section">
+      <h2> Messages</h2>
+      <p>Messages or inquiries submitted by students from the Contact Us section.</p>
+      <table class="table table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>student1@email.com</td>
+            <td>Can I still enroll after the deadline?</td>
+            <td>Aug 28, 2025</td>
+          </tr>
+          <tr>
+            <td>student2@email.com</td>
+            <td>Where can I find my section list?</td>
+            <td>Aug 29, 2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
